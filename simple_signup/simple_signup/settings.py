@@ -14,8 +14,10 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# import allauth.account.auth_backends
+# import django.contrib.auth.backends
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -27,7 +29,6 @@ SECRET_KEY = 'django-insecure-lmc@oa!j^=vi&+2cp0d#1e5xz^6n)-y%fffqykp6bgdtc=ilzc
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
-
 
 # Application definition
 
@@ -44,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'fpages',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 
 ]
 
@@ -67,6 +72,7 @@ ROOT_URLCONF = 'simple_signup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # 'DIRS': [],
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -80,11 +86,11 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_URL = 'sign/login/'
+# LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/sign/login/'
 LOGIN_REDIRECT_URL = '/about/'
 
 WSGI_APPLICATION = 'simple_signup.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -95,7 +101,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -115,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -126,7 +130,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -139,3 +142,14 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
+
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
